@@ -1,0 +1,359 @@
+body {
+    background-color: #ADD8E6; /* Baby blue background */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    background-color: #D2B48C; /* Light brown background */
+    padding: 20px 0;
+    position: relative;
+    font-family: 'Italianno', cursive;
+    font-size: 48px;
+    color: #4B2E2E; /* Dark brown text */
+}
+
+header img {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    height: 80px; /* Adjusted logo size */
+}
+
+nav {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Spacing between menu items */
+}
+
+nav a {
+    text-decoration: none;
+    color: #4B2E2E; /* Dark brown links */
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.large-image {
+    background: url('image.png') no-repeat center center;
+    background-size: cover;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.large-image h1 {
+    background-color: rgba(255, 255, 255, 0.8); /* Transparent white box */
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-family: 'Italianno', cursive;
+    font-size: 72px;
+    color: #4B2E2E;
+}
+
+main {
+    margin: 20px;
+    padding: 20px;
+    background-color: #ffffff; /* White content cards */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    font-family: 'Italianno', cursive;
+    font-size: 32px;
+    color: #4B2E2E;
+    text-align: center;
+}
+
+footer {
+    background-color: #D2B48C; /* Light brown footer */
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    color: #4B2E2E;
+}
+
+h1 {
+    font-family: 'Italianno', cursive;
+    font-size: 72px;
+    color: #4B2E2E; /* Café name color */
+    text-align: center;
+    margin: 0;
+}
+/* Seção About */
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    margin: 40px 0;
+}
+
+.about-img {
+    width: 40%;
+    max-width: 300px; /* Ajuste conforme necessário */
+    border-radius: 8px;
+}
+
+.about-text {
+    flex: 1;
+}
+
+/* Seção History */
+.history-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    margin: 40px 0;
+}
+
+.history-img {
+    width: 40%;
+    max-width: 300px; /* Ajuste conforme necessário */
+    border-radius: 8px;
+}
+
+.history-text {
+    flex: 1;
+}
+
+/* Responsividade: Ajuste para telas pequenas */
+@media (max-width: 768px) {
+    .about-container, .history-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-img, .history-img {
+        width: 80%; /* Imagem ocupa mais espaço em telas pequenas */
+    }
+}
+
+/* Food Menu Section */
+.food-menu {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.menu-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.menu-item {
+    width: 200px;
+    text-align: center;
+}
+
+.menu-item img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.menu-item h3 {
+    font-size: 18px;
+    margin: 10px 0 5px;
+}
+
+.menu-item p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Beverages Section */
+.beverages {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.beverages-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.beverages-header img {
+    width: 80px;
+    border-radius: 50%;
+}
+
+.beverages-header h3 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.beverages-prices table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 60%;
+}
+
+.beverages-prices th,
+.beverages-prices td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.beverages-prices th {
+    font-size: 16px;
+    background-color: #f4f4f4;
+}
+
+.beverages-note {
+    text-align: left;
+    font-size: 14px;
+    margin-top: 20px;
+    margin-left: 10%;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .menu-items {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .beverages-prices table {
+        width: 90%;
+    }
+
+    .beverages-note {
+        margin-left: 5%;
+    }
+}
+
+/* Contact Card */
+.contact-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.contact-card h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.contact-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-card label {
+    font-size: 14px;
+    text-align: left;
+}
+
+.contact-card input,
+.contact-card textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100%;
+}
+
+.contact-card button {
+    background-color: #5c4328;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.contact-card button:hover {
+    background-color: #4b3620;
+}
+
+/* Branches Card */
+.branches-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 800px;
+    text-align: center;
+}
+
+.branches-card h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.branch {
+    margin-bottom: 20px;
+}
+
+.branch h3 {
+    font-size: 16px;
+    color: #5c4328;
+    margin-bottom: 5px;
+}
+
+.branch p {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+/* Footer */
+footer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background-color: #5c4328;
+    color: white;
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Background Patterns */
+body {
+    background-color: #b9d4e0;
+    background-image: url('images/pattern.png'); /* Insira a imagem padrão correta aqui */
+    background-repeat: repeat;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
