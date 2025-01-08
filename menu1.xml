@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+  <foods>
+    <item>
+      <name>Beetroot and Feta Salad</name>
+      <price>$15.00</price>
+      <description>Suitable for vegetarians, made with fresh beetroot.</description>
+      <image>images/Beetroot.png</image>
+    </item>
+    <item>
+      <name>Spinach Pie and Salad</name>
+      <price>$20.00</price>
+      <description>Tasty pie with salad.</description>
+      <image>images/pie.png</image>
+    </item>
+    <item>
+      <name>Sourdough Rye Sandwich</name>
+      <price>$18.00</price>
+      <description>Cheese and salad sandwich made with organic sourdough rye bread.</description>
+      <image>images/sandwich.png</image>
+    </item>
+    <item>
+      <name>Feta Pancakes with Salad</name>
+      <price>$19.50</price>
+      <description>Tasty pancake filled with feta and salad.</description>
+      <image>images/feta.png</image>
+    </item>
+  </foods>
+  <beverages>
+    <category>
+      <name>Coffee and Hot Chocolates</name>
+      <image1>images/coffe.png</image1>
+      <image2>images/hotchocolatte.png</image2>
+      <sizes>
+        <size>
+          <name>Small</name>
+          <price>$3.50</price>
+        </size>
+        <size>
+          <name>Regular</name>
+          <price>$4.00</price>
+        </size>
+        <size>
+          <name>Large</name>
+          <price>$4.50</price>
+        </size>
+      </sizes>
+    </category>
+    <item>
+      <name>Soda</name>
+      <price>$3.00</price>
+    </item>
+    <item>
+      <name>Fresh Juice</name>
+      <price>$6.00</price>
+    </item>
+    <item>
+      <name>Bottled Water</name>
+      <price>$2.00</price>
+    </item>
+  </beverages>
+</menu>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu - Bryan's Café</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+  <script>
+    async function loadMenu() {
+      try {
+        // Fetch the XML file
+        const response = await fetch('menu1.xml');
+        if (!response.ok) throw new Error('Network response was not OK');
+
+        const xmlText = await response.text();
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlText, 'application/xml');
+
+        // Load Foods
+        const foods = xmlDoc.getElementsByTagName('foods')[0];
+        let foodHTML = '';
+        const foodItems = foods.getElementsByTagName('item');
+        for (let i = 0; i < foodItems.length; i++) {
+          const name = foodItems[i].getElementsByTagName('name')[0].textContent;
+          const price = foodItems[i].getElementsByTagName('price')[0].textContent;
+          const description = foodItems[i].getElementsByTagName('description')[0].textContent;
+          const image = foodItems[i].getElementsByTagName('image')[0].textContent;
+
+          foodHTML += `
+            <div class="menu-item">
+              <img src="${image}" alt="${name}">
+              <h3>${name}</h3>
+              <p>${price}<br>${description}</p>
+            </div>
+          `;
+        }
+        document.querySelector('.food-menu .menu-items').innerHTML = foodHTML;
+
+        // Load Beverages
+        const beverages = xmlDoc.getElementsByTagName('beverages')[0];
+        const category = beverages.getElementsByTagName('category')[0];
+        const categoryName = category.getElementsByTagName('name')[0].textContent;
+        const image1 = category.getElementsByTagName('image1')[0].textContent;
+        const image2 = category.getElementsByTagName('image2')[0].textContent;
+
+        document.querySelector('.beverages .beverages-header').innerHTML = `
+          <img src="${image1}" alt="Coffee">
+          <h3>${categoryName}</h3>
+          <img src="${image2}" alt="Hot Chocolates">
+        `;
+
+        let beverageHTML = '<table><tr><th>Sizes</th><th>Price</th></tr>';
+        const sizes = category.getElementsByTagName('size');
+        for (let i = 0; i < sizes.length; i++) {
+          const sizeName = sizes[i].getElementsByTagName('name')[0].textContent;
+          const sizePrice = sizes[i].getElementsByTagName('price')[0].textContent;
+
+          beverageHTML += `
+            <tr>
+              <td>${sizeName}</td>
+              <td>${sizePrice}</td>
+            </tr>
+          `;
+        }
+        beverageHTML += '</table>';
+
+        const otherItems = beverages.getElementsByTagName('item');
+        for (let i = 0; i < otherItems.length; i++) {
+          const itemName = otherItems[i].getElementsByTagName('name')[0].textContent;
+          const itemPrice = otherItems[i].getElementsByTagName('price')[0].textContent;
+
+          beverageHTML += `
+            <tr>
+              <td>${itemName}</td>
+              <td>${itemPrice}</td>
+            </tr>
+          `;
+        }
+
+        document.querySelector('.beverages-prices').innerHTML = beverageHTML;
+
+      } catch (error) {
+        console.error('Error loading XML:', error);
+      }
+    }
+
+    // Load the XML data when the page loads
+    window.onload = loadMenu;
+  </script>
+</head>
+<body>
+  <header>
+    <img src="images/logo.jpg" alt="Logo">
+    Bryan's Café
+    <nav>
+      <a href="about.html">About</a>
+      <a href="menu.html">Menu</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+  <div class="large-image">
+    <img src="images/cafe.jpg" alt="Cafe">
+  </div>
+  <main>
+    <!-- Food Menu Section -->
+    <section class="food-menu">
+      <h2>Menu</h2>
+      <div class="menu-items">Loading food menu...</div>
+    </section>
+
+    <!-- Beverages Section -->
+    <section class="beverages">
+      <h2>Beverages</h2>
+      <div class="beverages-header">Loading beverages...</div>
+      <div class="beverages-prices"></div>
+      <p class="beverages-note">For coffee,<br>please inform<br>the staff of the<br>coffee type.</p>
+    </section>
+  </main>
+  <footer>
+    &copy; <script>document.write(new Date().getFullYear())</script> Bryan's Café
+  </footer>
+</body>
+</html>

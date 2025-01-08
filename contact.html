@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Bryan's Café</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+    <script>
+        async function loadBranches() {
+            try {
+                // Fetch the XML file
+                const response = await fetch('branches.xml');
+                if (!response.ok) throw new Error('Network response was not OK');
+
+                // Parse the XML
+                const xmlText = await response.text();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlText, 'application/xml');
+
+                // Select branches from the XML
+                const branches = xmlDoc.getElementsByTagName('Branch');
+                let branchesHTML = '';
+
+                // Loop through each branch and build the HTML
+                for (let i = 0; i < branches.length; i++) {
+                    const address = branches[i].getElementsByTagName('Address')[0].textContent;
+                    const contact = branches[i].getElementsByTagName('Contact')[0].textContent;
+                    const hours = branches[i].getElementsByTagName('OpeningHours')[0].textContent;
+
+                    branchesHTML += `
+                        <div class="branch-item">
+                            <h3>${address}</h3>
+                            <p><strong>Contact:</strong> ${contact}</p>
+                            <p><strong>Hours:</strong> ${hours}</p>
+                        </div>
+                    `;
+                }
+
+                // Insert the branches into the page
+                document.querySelector('.branches').innerHTML = branchesHTML;
+
+            } catch (error) {
+                console.error('Error loading branches:', error);
+            }
+        }
+
+        // Load branches when the page loads
+        window.onload = loadBranches;
+    </script>
+</head>
+<body>
+    <header>
+        <img src="images/logo.jpg" alt="Logo">
+        Bryan's Café
+        <nav>
+            <a href="about.html">About</a>
+            <a href="menu.html">Menu</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Contact Form Section -->
+        <section class="contact-card">
+            <h2>Contact Us</h2>
+            <form action="#" method="POST">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Full name" required>
+
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="E-mail" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Message" rows="4" required></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+
+        <!-- Branches Section -->
+        <section class="branches-card">
+            <h2>Branches</h2>
+            <div class="branches">
+                Loading branches...
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <a href="contact.html">Contact Us</a>
+        <a href="follow-us.html">Follow Us</a>
+        <a href="about.html">About Us</a>
+        <a href="privacypolicy.html">Privacy Policy</a>
+    </footer>
+</body>
+</html>
