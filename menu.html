@@ -6,38 +6,40 @@
   <title>Menu - Bryan's Café</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+  
   <script>
     async function loadMenu() {
       try {
-        // Fetch the XML file
+        // Fetch o arquivo XML
         const response = await fetch('menu1.xml');
-        if (!response.ok) throw new Error('Network response was not OK');
+        if (!response.ok) throw new Error('Erro ao carregar XML');
 
         const xmlText = await response.text();
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xmlText, 'application/xml');
 
-        // Load Foods
+        // 🔹 Carregar o Menu de Comidas
         const foods = xmlDoc.getElementsByTagName('foods')[0];
         let foodHTML = '';
         const foodItems = foods.getElementsByTagName('item');
+
         for (let i = 0; i < foodItems.length; i++) {
-          const name = foodItems[i].getElementsByTagName('name')[0].textContent;
-          const price = foodItems[i].getElementsByTagName('price')[0].textContent;
-          const description = foodItems[i].getElementsByTagName('description')[0].textContent;
-          const image = foodItems[i].getElementsByTagName('image')[0].textContent;
+          const itemName = foodItems[i].getElementsByTagName('itemName')[0].textContent;
+          const itemPrice = foodItems[i].getElementsByTagName('itemPrice')[0].textContent;
+          const description = foodItems[i].getElementsByTagName('description')[0]?.textContent || '';
+          const image = foodItems[i].getElementsByTagName('image')[0]?.textContent || 'images/default.png';
 
           foodHTML += `
             <div class="menu-item">
-              <img src="${image}" alt="${name}">
-              <h3>${name}</h3>
-              <p>${price}<br>${description}</p>
+              <img src="${image}" alt="${itemName}">
+              <h3>${itemName}</h3>
+              <p>${itemPrice}<br>${description}</p>
             </div>
           `;
         }
         document.querySelector('.food-menu .menu-items').innerHTML = foodHTML;
 
-        // Load Beverages
+        // 🔹 Carregar o Menu de Bebidas
         const beverages = xmlDoc.getElementsByTagName('beverages')[0];
         const category = beverages.getElementsByTagName('category')[0];
         const categoryName = category.getElementsByTagName('name')[0].textContent;
@@ -67,8 +69,8 @@
 
         const otherItems = beverages.getElementsByTagName('item');
         for (let i = 0; i < otherItems.length; i++) {
-          const itemName = otherItems[i].getElementsByTagName('name')[0].textContent;
-          const itemPrice = otherItems[i].getElementsByTagName('price')[0].textContent;
+          const itemName = otherItems[i].getElementsByTagName('itemName')[0].textContent;
+          const itemPrice = otherItems[i].getElementsByTagName('itemPrice')[0].textContent;
 
           beverageHTML += `
             <tr>
@@ -81,11 +83,11 @@
         document.querySelector('.beverages-prices').innerHTML = beverageHTML;
 
       } catch (error) {
-        console.error('Error loading XML:', error);
+        console.error('Erro ao carregar XML:', error);
       }
     }
 
-    // Load the XML data when the page loads
+    // Carregar XML ao abrir a página
     window.onload = loadMenu;
   </script>
 </head>
@@ -99,9 +101,11 @@
       <a href="contact.html">Contact</a>
     </nav>
   </header>
+  
   <div class="large-image">
     <img src="images/cafe.jpg" alt="Cafe">
   </div>
+
   <main>
     <!-- Food Menu Section -->
     <section class="food-menu">
@@ -117,6 +121,7 @@
       <p class="beverages-note">For coffee,<br>please inform<br>the staff of the<br>coffee type.</p>
     </section>
   </main>
+
   <footer>
     &copy; <script>document.write(new Date().getFullYear())</script> Bryan's Café
   </footer>
