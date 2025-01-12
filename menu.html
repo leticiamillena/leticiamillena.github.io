@@ -18,7 +18,7 @@
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xmlText, 'application/xml');
 
-        // 🔹 Carregar o Menu de Comidas
+        // Carregar o Menu de Comidas
         const foods = xmlDoc.getElementsByTagName('foods')[0];
         let foodHTML = '';
         const foodItems = foods.getElementsByTagName('item');
@@ -39,7 +39,7 @@
         }
         document.querySelector('.food-menu .menu-items').innerHTML = foodHTML;
 
-        // 🔹 Carregar o Menu de Bebidas
+        //  Carregar o Menu de Bebidas
         const beverages = xmlDoc.getElementsByTagName('beverages')[0];
         const category = beverages.getElementsByTagName('category')[0];
         const categoryName = category.getElementsByTagName('name')[0].textContent;
