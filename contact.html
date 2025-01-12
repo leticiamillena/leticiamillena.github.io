@@ -27,12 +27,14 @@
                     const address = branches[i].getElementsByTagName('Address')[0].textContent;
                     const contact = branches[i].getElementsByTagName('Contact')[0].textContent;
                     const hours = branches[i].getElementsByTagName('OpeningHours')[0].textContent;
+                    const mapLink = branches[i].getElementsByTagName('MapLink')[0].textContent; // Fetch Google Maps Link
 
                     branchesHTML += `
                         <div class="branch-item">
                             <h3>${address}</h3>
                             <p><strong>Contact:</strong> ${contact}</p>
                             <p><strong>Hours:</strong> ${hours}</p>
+                            <p><a href="${mapLink}" target="_blank">View on Google Maps</a></p> <!-- Google Maps Link -->
                         </div>
                     `;
                 }
